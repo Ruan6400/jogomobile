@@ -44,37 +44,10 @@ function Start(){
     document.addEventListener('touchstart',SlideFingers.inn)
     document.addEventListener('touchmove',SlideFingers.middle)
     document.addEventListener('touchend',SlideFingers.out)
-    admob.rewardvideo.config({
-        id:"ca-app-pub-2757633356996550/1165230282",
-        isTesting:true
-    })
-    PegaEsseAD_ai()
     Update()
 }
 
-async function PegaEsseAD_ai(){
-      let h1 = document.querySelector('h1')
-      await admob.rewardvideo.prepare()
-           .then(()=>{
-              h1.innerHTML=""
-              let btn = document.createElement('button')
-              btn.innerHTML="Rodar Anuncio"
-              btn.addEventListener('click',()=>{
-                admob.rewardvideo.show()
-                     .then(()=>{
-                        h1.innerHTML="Anuncio Exibido"
-                        btn.remove()
-                     })
-                     .catch(err => {
-                        console.error("Erro ao exibir o anúncio:", err);
-                    })
-              })
-              tela.insertAdjacentElement('afterbegin',btn)
-           })
-           .catch(err=>{
-               console.error("Erro ao carregar o anúncio:", err);
-           })
-}
+
 
 function Update(){
     if(!slideble){
@@ -93,4 +66,4 @@ function Update(){
 
 
 
-document.addEventListener('deviceready',Start)
+document.addEventListener('DOMContentLoaded',Start)
